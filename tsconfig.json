@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "dist",
+    "declarationDir": "dist/types",
     "declarationMap": false,
     "esModuleInterop": false,
     "lib": ["esnext.array", "esnext", "es2017", "dom", "es5"],
