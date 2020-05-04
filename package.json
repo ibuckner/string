@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A small collection of string related functions",
   "main": "./dist/string.js",
   "module": "./dist/string.js",
@@ -9,13 +9,11 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run tsc && npm run bundle",
-    "bundle": "rollup -c",
+    "build": "rollup -c",
     "upload": "npm publish --access public",
-    "upload-test": "npm publish --dry-run --access public",
     "test": "jest --config jestconfig.json",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --config jestconfig.json --runInBand",
-    "tsc": "tsc"
+    "test-upload": "npm publish --dry-run --access public"
   },
   "repository": {
     "type": "git",
