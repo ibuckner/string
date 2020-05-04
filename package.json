@@ -1,12 +1,9 @@
 {
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "A small collection of string related functions",
-  "main": "dist/cjs/string.js",
-  "module": "dist/esm/string.js",
+  "main": "dist/es/string.js",
+  "module": "dist/es/string.js",
   "name": "@buckneri/string",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "rollup -c",
     "upload": "npm publish --access public",
@@ -36,7 +33,6 @@
     "jest": "^25.5.4",
     "jsdoc": "^3.6.4",
     "rollup": "^2.7.6",
-    "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
