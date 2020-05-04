@@ -3,7 +3,7 @@
  * @param s - string to select from
  * @param n - number of characters to select
  */
-function left(s, n) {
+export function left(s, n) {
     n = Math.abs(n);
     return s.slice(0, n === 0 ? s.length : n);
 }
@@ -11,21 +11,21 @@ function left(s, n) {
  * Returns true if character is an aposthrophe
  * @param text - single character to inspect
  */
-function isApostrophe(text) {
+export function isApostrophe(text) {
     return text.length === 1 && (text === "'" || text === "‘" || text === "’" || text === "`");
 }
 /**
  * Returns true if character is a hyphen
  * @param text - single character to inspect
  */
-function isHyphen(text) {
+export function isHyphen(text) {
     return text.length === 1 && (text === "‐" || text === "‑" || text === "-" || text === "⁃");
 }
 /**
  * Returns true if character string begins with an uppercase letter
  * @param text - text to test for propercase
  */
-function isPropercase(text) {
+export function isPropercase(text) {
     let proper = false, wordStart = true;
     for (let i = 0; i < text.length; i++) {
         if (isApostrophe(text[i]) || isHyphen(text[i]) || isSpace(text[i])) {
@@ -51,7 +51,7 @@ function isPropercase(text) {
  * Returns true if character string is whitespace
  * @param text - text to test for whitespace
  */
-function isSpace(text) {
+export function isSpace(text) {
     return text.length > 0 && text.trim() === "";
 }
 /**
@@ -59,8 +59,6 @@ function isSpace(text) {
  * @param s - string to select from
  * @param n - number of characters to select
  */
-function right(s, n) {
+export function right(s, n) {
     return s.slice(-1 * Math.abs(n));
 }
-
-export { isApostrophe, isHyphen, isPropercase, isSpace, left, right };

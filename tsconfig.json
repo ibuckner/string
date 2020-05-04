@@ -3,6 +3,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": false,
+    "esModuleInterop": true,
     "lib": ["esnext.array", "esnext", "es2017", "dom", "es5"],
     "module": "es2015",
     "moduleResolution": "node",
