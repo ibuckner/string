@@ -13,13 +13,29 @@ export default [
 		},
 	  output: [
 			{
-				file: "./dist/esm/string.js",
-				format: "esm",
-			},
-			{
 				file: "./dist/cjs/string.js",
 				format: "cjs",
-				esModule: false
+				esModule: false,
+				name: "strUtility"
+			}
+	  ],
+	  plugins: [
+			typescript(),
+			resolve(),
+			commonjs()
+		]
+	},
+	{
+		input: "src/index.ts",
+		onwarn(warning, rollupWarn) {
+			if (warning.code !== "CIRCULAR_DEPENDENCY") {
+				rollupWarn(warning);
+			}
+		},
+	  output: [
+			{
+				file: "./dist/esm/string.mjs",
+				format: "esm",
 			}
 	  ],
 	  plugins: [
