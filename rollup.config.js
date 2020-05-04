@@ -12,7 +12,7 @@ export default [
 		},
 	  output: [
 			{
-				file: "./dist/string.js",
+				file: "./dist/index.js",
 				format: "es",
 				esModule: true
 			}

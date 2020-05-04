@@ -1,8 +1,8 @@
 {
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "A small collection of string related functions",
-  "main": "dist/es/string.js",
-  "module": "dist/es/string.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "name": "@buckneri/string",
   "scripts": {
     "build": "rollup -c",
