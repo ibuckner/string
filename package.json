@@ -1,9 +1,8 @@
 {
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A small collection of string related functions",
-  "main": "./dist/string.js",
-  "module": "./dist/string.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/cjs/string.js",
+  "module": "dist/esm/string.js",
   "name": "@buckneri/string",
   "publishConfig": {
     "access": "public"

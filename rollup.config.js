@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
+import { terser } from "rollup-plugin-terser";
 
 export default [
 	{
@@ -12,14 +13,40 @@ export default [
 		},
 	  output: [
 			{
-				file: "./dist/string.js",
-				format: "es",
+				file: "./dist/esm/string.js",
+				format: "esm",
+			},
+			{
+				file: "./dist/cjs/string.js",
+				format: "cjs",
 			}
 	  ],
 	  plugins: [
 			resolve(),
 			commonjs(),
-			typescript()	
+			typescript()
 		]
+	},
+	{
+		input: "src/index.ts",
+		onwarn(warning, rollupWarn) {
+			if (warning.code !== "CIRCULAR_DEPENDENCY") {
+				rollupWarn(warning);
+			}
+		},
+	  output: [
+			{
+				file: "./dist/umd/string.js",
+				format: "umd",
+				name: "strUtility",
+				esModule: false
+			}
+	  ],
+	  plugins: [
+			resolve(),
+			commonjs(),
+			typescript(),
+			terser()
+		] 
 	}
 ];
