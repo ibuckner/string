@@ -15,8 +15,7 @@ export default [
 			{
 				file: "./dist/cjs/string.js",
 				format: "cjs",
-				esModule: false,
-				name: "strUtility"
+				esModule: false
 			}
 	  ],
 	  plugins: [
@@ -34,7 +33,7 @@ export default [
 		},
 	  output: [
 			{
-				file: "./dist/esm/string.mjs",
+				file: "./dist/esm/string.js",
 				format: "esm",
 			}
 	  ],
