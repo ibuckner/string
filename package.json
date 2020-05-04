@@ -1,5 +1,5 @@
 {
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A small collection of string related functions",
   "main": "dist/cjs/string.js",
   "module": "dist/esm/string.js",

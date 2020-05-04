@@ -19,6 +19,7 @@ export default [
 			{
 				file: "./dist/cjs/string.js",
 				format: "cjs",
+				esModule: false
 			}
 	  ],
 	  plugins: [
