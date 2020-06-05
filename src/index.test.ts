@@ -1,9 +1,10 @@
 import {
-  isApostrophe, isDate, isHyphen, isNHSNumber, isNumeric, isPropercase, isSpace,
-  left, reEmail, rePostcode, reURL, reYYYYMMDD, right
+  isApostrophe, isDate, isHyphen, isNHSNumber, isNumeric, isPropercase, isSpace, left, 
+  reEmail, rePostcode, reURL, reYYYYMMDD,
+  right
 } from ".";
 
-test("Test isApostrophe()", () => {
+test("isApostrophe()", () => {
   expect(isApostrophe("'")).toStrictEqual(true);
   expect(isApostrophe("‘")).toStrictEqual(true);
   expect(isApostrophe("’")).toStrictEqual(true);
@@ -12,7 +13,7 @@ test("Test isApostrophe()", () => {
   expect(isApostrophe("'O")).toStrictEqual(false);
 });
 
-test("isDate function tests", () => {
+test("isDate()", () => {
   expect(isDate("Non-empty string")).toBe(false);
   expect(isDate("")).toBe(false);
   expect(isDate(null)).toBe(false);
@@ -22,16 +23,15 @@ test("isDate function tests", () => {
   expect(isDate(new Date())).toBe(true);
   expect(isDate("20190101", reYYYYMMDD)).toBe(false);
   expect(isDate("2019-01-01", reYYYYMMDD)).toBe(true);
-  // note: leap year errors are not handled
-  expect(isDate("2019-02-29", reYYYYMMDD)).toBe(true);
+  expect(isDate("2019-02-29", reYYYYMMDD)).toBe(false); // catch leap year errors
 });
 
-test("isEmail function tests", () => {
+test("Email regular expression", () => {
   expect(reEmail.test("joe.soap@aol.com")).toBe(true);
   expect(reEmail.test("@joe.soap@")).toBe(false);
 });
 
-test("Test isHyphen()", () => {
+test("isHyphen()", () => {
   expect(isHyphen("‐")).toStrictEqual(true);
   expect(isHyphen("‑")).toStrictEqual(true);
   expect(isHyphen("-")).toStrictEqual(true);
@@ -40,7 +40,7 @@ test("Test isHyphen()", () => {
   expect(isHyphen("-D")).toStrictEqual(false);
 });
 
-test("isNHSNumber function tests", () => {
+test("isNHSNumber()", () => {
   expect(isNHSNumber("446 610 5715")).toBe(true);
   expect(isNHSNumber("446 610 1234")).toBe(false);
   expect(isNHSNumber("401 023 2137")).toBe(true);
@@ -48,7 +48,7 @@ test("isNHSNumber function tests", () => {
   expect(isNHSNumber("1111111111")).toBe(false);
 });
 
-test("isNumeric function tests", () => {
+test("isNumeric()", () => {
   expect(isNumeric("Non-empty string")).toBe(false);
   expect(isNumeric("")).toBe(false);
   expect(isNumeric(null)).toBe(false);
@@ -59,7 +59,7 @@ test("isNumeric function tests", () => {
   expect(isNumeric(0e2)).toBe(true);
 });
 
-test("isPostcode function tests", () => {
+test("Postcode regular expression", () => {
   expect(rePostcode.test("GIR 0AA")).toBe(true);
   expect(rePostcode.test("gir0aa")).toBe(true);
   expect(rePostcode.test("E9 1AA")).toBe(true);
@@ -72,7 +72,7 @@ test("isPostcode function tests", () => {
   expect(rePostcode.test("")).toBe(false);
 });
 
-test("Test isPropercase()", () => {
+test("isPropercase()", () => {
   expect(isPropercase("")).toStrictEqual(false);
   expect(isPropercase("dOG")).toStrictEqual(false);
   expect(isPropercase("DOG")).toStrictEqual(false);
@@ -87,26 +87,26 @@ test("Test isPropercase()", () => {
   expect(isPropercase("O'Grady")).toStrictEqual(true);
 });
 
-test("Test isSpace()", () => {
+test("isSpace()", () => {
   expect(isSpace("")).toStrictEqual(false);
   expect(isSpace(" ")).toStrictEqual(true);
   expect(isSpace("I ")).toStrictEqual(false);
   expect(isSpace("\t")).toStrictEqual(true);
 });
 
-test("isURL function tests", () => {
+test("URL regular expression", () => {
   expect(reURL.test("https://www.google.com")).toBe(true);
   expect(reURL.test("https://www.go ogle.com")).toBe(false);
 });
 
-test("Test left hand string selection", () => {
+test("left()", () => {
   expect(left("Red lorry, yellow lorry", 3)).toStrictEqual("Red");
   expect(left("Red lorry, yellow lorry", 0)).toStrictEqual("Red lorry, yellow lorry");
   expect(left("Red lorry, yellow lorry", -3)).toStrictEqual("Red");
   expect(left("Red lorry, yellow lorry", 500)).toStrictEqual("Red lorry, yellow lorry");
 });
 
-test("Test right hand string selection", () => {
+test("right()", () => {
   expect(right("Red lorry, yellow lorry", 5)).toStrictEqual("lorry");
   expect(right("Red lorry, yellow lorry", 0)).toStrictEqual("Red lorry, yellow lorry");
   expect(right("Red lorry, yellow lorry", -5)).toStrictEqual("lorry");

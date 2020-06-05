@@ -97,11 +97,30 @@ export function left(s: string, n: number): string {
 	return s.slice(0, n === 0 ? s.length : n);
 }
 
-export const reEmail: RegExp = /\b[\w\._]+@[\w]+\.[\w\.]+\b/g;
-export const reDecimal: RegExp = /\b[-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][-+]?[0-9]+)?\b/g;
-export const rePostcode: RegExp = /^(gir\s{0,3}0aa)|((([a-z][0-9]{1,2})|(([a-z][a-hj-y][0-9]{1,2})|(([a-z][0-9][a-z])|([a-z][a-hj-y][0-9]?[a-z]))))\s{0,3}[0-9][a-z]{2})$/i;
-export const reURL: RegExp = /\b(https?|ftp|file):\/\/([\w\d-.]+):?(\d{2,})?\b/g;
-export const reYYYYMMDD: RegExp = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+/**
+ * Test for email
+ */
+export const reEmail: RegExp = new RegExp(/\b[\w\._]+@[\w]+\.[\w\.]+\b/, "gmi");
+
+/**
+ * Tests for decimal value
+ */
+export const reDecimal: RegExp = new RegExp(/\b[-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][-+]?[0-9]+)?\b/, "gmi");
+
+/**
+ * Tests for UK postcode
+ */
+export const rePostcode: RegExp = new RegExp(/^(gir\s{0,3}0aa)|((([a-z][0-9]{1,2})|(([a-z][a-hj-y][0-9]{1,2})|(([a-z][0-9][a-z])|([a-z][a-hj-y][0-9]?[a-z]))))\s{0,3}[0-9][a-z]{2})$/, "i");
+
+/**
+ * Tests for URLs prefixed with one of [file, ftp, http, https]
+ */
+export const reURL: RegExp = new RegExp(/\b(https?|ftp|file):\/\/([\w\d-.]+):?(\d{2,})?\b/, "gmi");
+
+/**
+ * Tests for format 1999-01-01
+ */
+export const reYYYYMMDD: RegExp = new RegExp(/\b\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])\b/, "gmi");
 
 /**
  * Select n characters from the right side of string s
