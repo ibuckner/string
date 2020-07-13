@@ -1,8 +1,13 @@
 {
   "bail": 1,
+  "globals": {
+    "ts-jest": {
+      "packageJson": "package.json"
+    }
+  },
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   "transform": {
     "^.+\\.(t|j)sx?$": "ts-jest"
-  }  
+  }
 }

@@ -98,6 +98,17 @@ export function left(s: string, n: number): string {
 }
 
 /**
+ * Depulicates repeating whitespace and linebreaks
+ * @param text 
+ */
+export function normalize(text: string): string {
+  let r: string = text.replace(/[\r\n]+/g, "\n");
+  r = r.replace(/[ \t]+/g, " ");
+  r = r.replace(/\s?[\-]\s?/g, "-");
+  return r;
+}
+
+/**
  * Test for email
  */
 export const reEmail: RegExp = new RegExp(/\b[\w\._]+@[\w]+\.[\w\.]+\b/, "gmi");

@@ -1,7 +1,6 @@
 import {
   isApostrophe, isDate, isHyphen, isNHSNumber, isNumeric, isPropercase, isSpace, left, 
-  reEmail, rePostcode, reURL, reYYYYMMDD,
-  right
+  normalize, reEmail, rePostcode, reURL, reYYYYMMDD, right
 } from ".";
 
 test("isApostrophe()", () => {
@@ -92,6 +91,12 @@ test("isSpace()", () => {
   expect(isSpace(" ")).toStrictEqual(true);
   expect(isSpace("I ")).toStrictEqual(false);
   expect(isSpace("\t")).toStrictEqual(true);
+});
+
+test("normalize()", () => {
+  const before = "Hello John-   Adams,\n\nyour parcel is waiting a the collection center.\n\nCustomer services.";
+  const after = "Hello John-Adams,\nyour parcel is waiting a the collection center.\nCustomer services.";
+  expect(normalize(before)).toStrictEqual(after);
 });
 
 test("URL regular expression", () => {
