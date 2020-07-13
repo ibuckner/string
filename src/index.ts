@@ -98,7 +98,7 @@ export function left(s: string, n: number): string {
 }
 
 /**
- * Depulicates repeating whitespace and linebreaks
+ * Removes repeating whitespace and linebreaks
  * @param text 
  */
 export function normalize(text: string): string {

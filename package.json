@@ -1,9 +1,9 @@
 {
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "A small collection of string related functions",
-  "main": "./dist/index.js",
-  "type": "module",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "type": "commonjs",
   "name": "@buckneri/string",
   "scripts": {
     "build": "rollup -c",
