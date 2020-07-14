@@ -102,10 +102,24 @@ export function left(s: string, n: number): string {
  * @param text 
  */
 export function normalize(text: string): string {
-  let r: string = text.replace(/[\r\n]+/g, "\n");
-  r = r.replace(/[ \t]+/g, " ");
-  r = r.replace(/\s?[\-]\s?/g, "-");
+  let r: string = text.replace(/[\r\n]+/gm, "\n");
+  r = r.replace(/[ \t]+/gm, " ");
+  r = r.replace(/\s?[\-]\s?/gm, "-");
+  if (r.indexOf(".") === -1) {
+    r = r.replace(/\b([A-Z]+)\b/g, (str, p1) => {
+      return properCase(p1);
+    });
+  }
   return r;
+}
+
+/**
+ * Returns text in titlecase format
+ * @param text 
+ */
+export function properCase(text: string): string {
+  let r = text.replace(/\b[a-z]*\b/gi, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+  return r.replace(/\'[A-Z]\b/g, txt => txt.toLowerCase());
 }
 
 /**
