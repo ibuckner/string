@@ -106,9 +106,7 @@ export function normalize(text: string): string {
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
   if (r.indexOf(".") === -1) {
-    r = r.replace(/\b([A-Z]+)\b/g, (str, p1) => {
-      return properCase(p1);
-    });
+    r = properCase(r);
   }
   return r;
 }

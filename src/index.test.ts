@@ -94,9 +94,10 @@ test("isSpace()", () => {
 });
 
 test("normalize()", () => {
-  const before = "Hello John-   Adams,\n\nyour parcel is waiting a the UK collection center\n\nCustomer services";
-  const after = "Hello John-Adams,\nyour parcel is waiting a the Uk collection center\nCustomer services";
+  const before = "Hello John-   Adams,\n\nyour parcel is waiting a the UK collection center.\n\nCustomer services";
+  const after = "Hello John-Adams,\nyour parcel is waiting a the UK collection center.\nCustomer services";
   expect(normalize(before)).toStrictEqual(after);
+  expect(normalize("st james church")).toStrictEqual("St James Church");
 });
 
 test("properCase()", () => {
