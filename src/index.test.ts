@@ -98,6 +98,7 @@ test("normalize()", () => {
   const after = "Hello John-Adams,\nyour parcel is waiting a the UK collection center.\nCustomer services";
   expect(normalize(before)).toStrictEqual(after);
   expect(normalize("st james church")).toStrictEqual("St James Church");
+  expect(normalize("He came, he saw, he conquered")).toStrictEqual("He came, he saw, he conquered");
 });
 
 test("properCase()", () => {

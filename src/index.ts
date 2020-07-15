@@ -105,7 +105,7 @@ export function normalize(text: string): string {
   let r: string = text.replace(/[\r\n]+/gm, "\n");
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
-  if (r.indexOf(".") === -1) {
+  if (r.indexOf(".") === -1 && r.indexOf(",") === -1) {
     r = properCase(r);
   }
   return r;
