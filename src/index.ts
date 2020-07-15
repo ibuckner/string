@@ -105,8 +105,12 @@ export function normalize(text: string): string {
   let r: string = text.replace(/[\r\n]+/gm, "\n");
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
-  if (r.indexOf(".") === -1 && r.indexOf(",") === -1) {
-    r = properCase(r);
+  const re: RegExp = new RegExp(/\b[a-z]+\b/, "gmi");
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(r)) !== null) {
+    if (m[0] !== m[0].toLocaleLowerCase() && m[0] !== m[0].toLocaleUpperCase() && !isPropercase(m[0])) {
+      r = r.substring(0, m.index) + m[0].toLocaleLowerCase() + r.substring(m.index + m[0].length);
+    }
   }
   return r;
 }
