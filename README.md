@@ -4,6 +4,9 @@ A collection of functions for searching and verifying strings
 
 ```javascript
 
+  findCurrency(searchText);
+  // Returns array of RegExpMatchArray of currency values found
+
   findDate(searchText);
   // Returns array of RegExpMatchArray of dates found
 

@@ -1,7 +1,7 @@
 /**
  * Test for email
  */
-const reEmail = /\b[\w\._]+@[\w]+\.[\w\.]+\b/g;
+const reEmail = /\b(?:[''\w+\-\_\.]+)@(?!\.)(?:[\w+\-\_\.]+)\.(?:[\w+\-\_\.]+)\b/gmi;
 
 /**
  * Returns iterator of emails located in string

@@ -1,9 +1,11 @@
+import { findCurrency } from "./currency";
 import { isDate, findDate } from "./date";
 import { isNumeric, findNumeric } from "./numeric";
 import { findEmail } from "./email";
 import { isNHSNumber, findNHSNumber } from "./nhs";
 import { findUKPostcode } from "./postcode";
 import { isPropercase, properCase } from "./propercase";
+import { findUKTelephone } from "./telephone";
 import { left, right } from "./trim";
 import { findURL } from "./url";
 
@@ -51,11 +53,13 @@ function normalize(text: string): string {
 
 
 export {
+  findCurrency,
   findDate,
   findEmail,
   findNHSNumber,
   findNumeric,
   findUKPostcode,
+  findUKTelephone,
   findURL,
 
   isApostrophe,
