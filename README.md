@@ -1,44 +1,59 @@
 # string
 
-A small collection of string related functions
+A collection of functions for searching and verifying strings
 
 ```javascript
 
-isApostrophe("'");
-//> true
+  findDate(searchText);
+  // Returns array of RegExpMatchArray of dates found
 
-isDate("2019-01-01", reYYYYMMDD);
-// true
+  findEmail(searchText);
+  // Returns array of RegExpMatchArray of emails found
 
-isHyphen("-");
-//> true
+  findNHSNumber(searchText);
+  // Returns array of RegExpMatchArray of NHS numbers found
 
-isNHSNumber("446 610 5715");
-//> true
+  findNumeric(searchText);
+  // Returns array of RegExpMatchArray of numeric values found
 
-isNumeric(42);
-//> true
+  findUKPostcode(searchText);
+  // Returns array of RegExpMatchArray of UK postcodes found
 
-isPropercase("Automobile");
-//> true
+  findURL(searchText);
+  // Returns array of RegExpMatchArray of urls found
 
-isSpace(" ");
-//> true
+  isApostrophe(character);
+  // Returns true if single quote
 
-left("Robots drink oil", 3);
-//> "Rob"
+  isDate(string);
+  // Returns true if date format recognised
 
-reEmail.test("joe.soap@aol.com");
-//> true
+  isHyphen(character);
+  // Returns true if dash
 
-rePostcode.test("EC8W 0AA");
-//> true
+  isNHSNumber(string);
+  // Returns true if NHS number
 
-reURL.test("https://www.google.com");
-//> true
+  isNumeric(string);
+  // Returns true if number
 
-right("Robots drink oil", £);
-//> "oil"
+  isPropercase(string);
+  // Returns true if matches Titlecase
+
+  isSpace(character);
+  // Returns true if space
+
+  left(string, n);
+  // Returns substring starting from left hand side for n length
+
+  properCase(string);
+  // Returns string formatted as Titlecase
+
+  normalize(string);
+  // Returns string without excess space and unusual capitalisation
+
+  right(string, n);
+  // Returns substring starting from right hand side for n length
 ```
 
 ## Install
