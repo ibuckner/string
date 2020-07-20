@@ -1,6 +1,6 @@
 const reMoney = [
   /[$£€]\s*\d[\d,]*(?:\.\d{1,2})?(?:\s?(?:b|m|tr)illion|bn|k|m)?\b/gmi,
-  /\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m|p)?\s?(?:pounds?|p(?:ence)?|euros?|dollars?|c(?:ents?)?)\b/gmi
+  /\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m)?(?:(?:\s(?:pound|pence|euro|dollar|cent)s?)|(?:c|p))\b/gmi
 ];
 
 /**
