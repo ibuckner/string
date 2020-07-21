@@ -24,6 +24,7 @@ const reDates: RegExp[] = [
 
   new RegExp(`\\b(?:${m})\\s${dd}${sc}${yyyy}\\b`, "gmi"),
   new RegExp(`\\b(?:${dd}\\s(?:of\\s)?)?(?:${m})${sc}${yyyy}\\b`, "gmi"),
+  new RegExp(`\\b(?:${dd}\\s(?:of\\s)?)?(?:${m})\\b`, "gmi"),
   new RegExp(`\\b(?:${m})\\s${dd}\\s${yyyy}\\b`, "gmi"),
   new RegExp(`\\b(?:${dd}\\s)?(?:${m})\\s${yyyy}\\b`, "gmi"),
   new RegExp(`\\b(?:${yyyy}\\s)?(?:${m})(?:\\s(?:the\\s)?${dd})?\\b`, "gmi"),
