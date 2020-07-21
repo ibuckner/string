@@ -4,7 +4,7 @@ A collection of functions for searching and verifying strings
 
 ```javascript
 
-  findCurrency(searchText);
+  findCurrency(searchText, locale=["en-GB"]);
   // Returns array of RegExpMatchArray of currency values found
 
   findDate(searchText);
