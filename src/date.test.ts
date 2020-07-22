@@ -3,13 +3,9 @@ import { isDate, findDate } from "./date";
 test("isDate()", () => {
   expect(isDate("Non-empty string")).toBe(false);
   expect(isDate("")).toBe(false);
-  expect(isDate(null)).toBe(false);
-  expect(isDate(undefined)).toBe(false);
   expect(isDate("20190101")).toBe(false);
   expect(isDate("2019-01-01")).toBe(true);
-  expect(isDate("2019-02-29")).toBe(false); // does not match leap year errors
-  expect(isDate("01-01-2019")).toBe(true);
-  expect(isDate("1/1/2019")).toBe(true);
+  expect(isDate("2019-02-30")).toBe(true);  // becomes 2019-03-02 in Chrome
 });
 
 test("findDate()", () => {
@@ -29,4 +25,9 @@ test("findDate()", () => {
   expect(m[10][0]).toBe("2nd of February 2010");
   expect(m[11][0]).toBe("January the 18th");
   expect(m[12][0]).toBe("6 July");
+});
+
+test("findDate exceptions", () => {
+  let m = findDate("May we go?");
+  expect(m.length).toBe(0);
 });

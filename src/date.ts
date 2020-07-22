@@ -1,52 +1,46 @@
-const sc = "(?:,\\s?|\\s)";
-const sd = "\\-";
-const sp = "\\.";
-const ss = "[\\/\\\\]";
-const dd = "(?:0?(?:1(?:st)?|2(?:nd)?|3(?:rd)?|[4-9](?:th)?)|1[0-9](?:th)?|2[04-9](?:th)?|[23]1(?:st)?|22(?:nd)?|23(?:rd)?|30(?:th)?)";
-const mm = "0?[1-9]|1[012]";
-const m = "jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?";
-const yyyy = "\\d{4}";
+const sep = "(?:,\\s?|\\s|\\-|\\.|\\/|\\\\|\\sof\\s|\\sthe\\s)";
+const dd = "(0?(?:1(?:st)?|2(?:nd)?|3(?:rd)?|[4-9](?:th)?)|1[0-9](?:th)?|2[04-9](?:th)?|[23]1(?:st)?|22(?:nd)?|23(?:rd)?|30(?:th)?)";
+const mm = "(0?[1-9]|1[012])";
+const m = "(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)";
+const yyyy = "(\\d{4})";
 
 const reDates: RegExp[] = [
-  new RegExp(`\\b${yyyy}${sp}(?:${mm}|${m})(?:${sp}${dd})?\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}${sd}(?:${mm}|${m})(?:${sd}${dd})?\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}${ss}(?:${mm}|${m})(?:${ss}${dd})?\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}${sp}${dd}${sp}(?:${mm}|${m})\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}${sd}${dd}${sd}(?:${mm}|${m})\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}${ss}${dd}${ss}(?:${mm}|${m})\\b`, "gmi"),
+  // full short dates
+  new RegExp(`\\b${yyyy}${sep}${mm}${sep}${dd}\\b`, "gmi"),
+  new RegExp(`\\b${yyyy}${sep}${dd}${sep}${mm}\\b`, "gmi"),
+  new RegExp(`\\b${dd}${sep}${mm}${sep}${yyyy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}${sep}${dd}${sep}${yyyy}\\b`, "gmi"),
 
-  new RegExp(`\\b(?:${mm}|${m})${sp}${dd}${sp}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${mm}|${m})${sd}${dd}${sd}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${mm}|${m})${ss}${dd}${ss}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}${sp})?(?:${mm}|${m})${sp}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}${sd})?(?:${mm}|${m})${sd}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}${ss})?(?:${mm}|${m})${ss}${yyyy}\\b`, "gmi"),
+  // full long dates
+  new RegExp(`\\b${yyyy}${sep}${m}${sep}${dd}\\b`, "gmi"),
+  new RegExp(`\\b${yyyy}${sep}${dd}${sep}${m}\\b`, "gmi"),
+  new RegExp(`\\b${dd}${sep}${m}${sep}${yyyy}\\b`, "gmi"),
+  new RegExp(`\\b${m}${sep}${dd}${sep}${yyyy}\\b`, "gmi"),
 
-  new RegExp(`\\b(?:${m})\\s${dd}${sc}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}\\s(?:of\\s)?)?(?:${m})${sc}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}\\s(?:of\\s)?)?(?:${m})\\b`, "gmi"),
-  new RegExp(`\\b(?:${m})\\s${dd}\\s${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${dd}\\s)?(?:${m})\\s${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b(?:${yyyy}\\s)?(?:${m})(?:\\s(?:the\\s)?${dd})?\\b`, "gmi"),
-  new RegExp(`\\b${yyyy}\\s${dd}\\s(?:${m})\\b`, "gmi")
+  // partial short dates
+  new RegExp(`\\b${yyyy}${sep}${mm}\\b`, "gmi"),
+  new RegExp(`\\b${dd}${sep}${mm}\\b`, "gmi"),
+  new RegExp(`\\b${mm}${sep}${yyyy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}${sep}${dd}\\b`, "gmi"),
+
+  // partial long dates
+  new RegExp(`\\b${yyyy}${sep}${m}\\b`, "gmi"),
+  new RegExp(`\\b${dd}${sep}${m}\\b`, "gmi"),
+  new RegExp(`\\b${m}${sep}${yyyy}\\b`, "gmi"),
+  new RegExp(`\\b${m}${sep}${dd}\\b`, "gmi"),
 ];
 
 /**
  * Returns true if a date
  * @param d - date string to test
  */
-export function isDate(d: any): boolean {
-  if (Object.prototype.toString.call(d) === "[object Date]") {
-    return true;
+export function isDate(d: string): boolean {
+  const mm = Date.parse(d);
+  if (isNaN(mm)) {
+    return false;
   }
-  let found = false;
-  for (let i = 0; i < reDates.length; i++) {
-    found = reDates[i].test(d);
-    if (found) {
-      break;
-    }
-  }
-  return found;
+  const dd = new Date(mm);
+  return true;
 }
 
 /**
@@ -61,7 +55,7 @@ export function findDate(d: string): RegExpMatchArray[] {
   reDates.forEach(m => {
     for (const mt of d.matchAll(m)) {
       // debug
-      // (mt as any).source = m.source;
+      (mt as any).source = m.source;
 
       if (mt.index !== undefined) {
         if (clean.has(mt.index)) {
