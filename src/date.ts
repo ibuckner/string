@@ -17,12 +17,6 @@ const reDates: RegExp[] = [
   new RegExp(`\\b${dd}${sep}${m}${sep}${yyyy}\\b`, "gmi"),
   new RegExp(`\\b${m}${sep}${dd}${sep}${yyyy}\\b`, "gmi"),
 
-  // partial short dates
-  new RegExp(`\\b${yyyy}${sep}${mm}\\b`, "gmi"),
-  new RegExp(`\\b${dd}${sep}${mm}\\b`, "gmi"),
-  new RegExp(`\\b${mm}${sep}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b${mm}${sep}${dd}\\b`, "gmi"),
-
   // partial long dates
   new RegExp(`\\b${yyyy}${sep}${m}\\b`, "gmi"),
   new RegExp(`\\b${dd}${sep}${m}\\b`, "gmi"),

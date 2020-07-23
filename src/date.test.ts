@@ -28,6 +28,6 @@ test("findDate()", () => {
 });
 
 test("findDate exceptions", () => {
-  let m = findDate("May we go?");
+  let m = findDate("May we go? The bus is only at 1.5% capacity.");
   expect(m.length).toBe(0);
 });
