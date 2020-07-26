@@ -41,6 +41,14 @@ function normalize(text: string): string {
   let r: string = text.replace(/[\r\n]+/gm, "\n");
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
+  if (/\s/gm.test(text) && text.length > 15) {
+    const allCaps = !/[a-z]/gm.test(text);
+    const allLow = !/[A-Z]/gm.test(text);
+    if (allCaps || allLow) {
+      r = properCase(r);
+      return r;
+    }
+  }
   const re: RegExp = new RegExp(/\b[a-z]+\b/, "gmi");
   let m: RegExpExecArray | null;
   while ((m = re.exec(r)) !== null) {

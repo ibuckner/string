@@ -33,4 +33,6 @@ test("normalize()", () => {
   expect(normalize(before)).toStrictEqual(after);
   expect(normalize("He came, he saw, he conquered")).toStrictEqual("He came, he saw, he conquered");
   expect(normalize("I saw JSmith yesTERDay.")).toStrictEqual("I saw jsmith yesterday.");
+  expect(normalize("THIS IS AN ALL CAPS SENTENCE.")).toStrictEqual("This Is An All Caps Sentence.");
+  expect(normalize("THE BELL INN,USA")).toStrictEqual("The Bell Inn,Usa");
 });
