@@ -6,6 +6,7 @@ import { isNHSNumber, findNHSNumber } from "./nhs";
 import { findUKPostcode } from "./postcode";
 import { isPropercase, properCase } from "./propercase";
 import { findUKTelephone } from "./telephone";
+import { findTime } from "./time";
 import { left, right } from "./trim";
 import { findURL } from "./url";
 
@@ -66,6 +67,7 @@ export {
   findEmail,
   findNHSNumber,
   findNumeric,
+  findTime,
   findUKPostcode,
   findUKTelephone,
   findURL,
