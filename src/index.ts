@@ -40,7 +40,7 @@ function isSpace(text: string): boolean {
  */
 function normalize(text: string): string {
   let m: RegExpExecArray | null;
-  let r: string = text.replace(/[\r\n]+/gm, "\n");
+  let r: string = text.replace(/[\r\n]+/gm, "\n").trim();
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
 
