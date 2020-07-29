@@ -39,9 +39,16 @@ function isSpace(text: string): boolean {
  * @param text 
  */
 function normalize(text: string): string {
+  let m: RegExpExecArray | null;
   let r: string = text.replace(/[\r\n]+/gm, "\n");
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
+
+  let re: RegExp = new RegExp(/\b(\d+)([A-Z][a-z]+)\b/, "gm");
+  while ((m = re.exec(r)) !== null) {
+    r = r.substring(0, m.index) + m[1] + " " + m[2] + r.substring(m.index + m[0].length, r.length);
+  }
+
   if (/\s/gm.test(text) && text.length > 15) {
     const allCaps = !/[a-z]/gm.test(text);
     const allLow = !/[A-Z]/gm.test(text);
@@ -50,8 +57,8 @@ function normalize(text: string): string {
       return r;
     }
   }
-  const re: RegExp = new RegExp(/\b[a-z]+\b/, "gmi");
-  let m: RegExpExecArray | null;
+
+  re = new RegExp(/\b[a-z]+\b/, "gmi");
   while ((m = re.exec(r)) !== null) {
     if (m[0] !== m[0].toLocaleLowerCase() && m[0] !== m[0].toLocaleUpperCase() && !isPropercase(m[0])) {
       r = r.substring(0, m.index) + m[0].toLocaleLowerCase() + r.substring(m.index + m[0].length);
