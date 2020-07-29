@@ -1,4 +1,4 @@
-import { findCurrency } from "./currency";
+import { findBankingNumbers, findCurrency } from "./currency";
 import { isDate, findDate } from "./date";
 import { isNumeric, findNumeric } from "./numeric";
 import { findEmail } from "./email";
@@ -60,8 +60,8 @@ function normalize(text: string): string {
   return r;
 }
 
-
 export {
+  findBankingNumbers,
   findCurrency,
   findDate,
   findEmail,

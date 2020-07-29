@@ -52,3 +52,27 @@ export function find(d: string, re: RegExp[]): RegExpMatchArray[] {
 
   return result;
 }
+
+/**
+ * Returns iterator of banking numbers located in string
+ * @param d - string to test
+ * @param localSet - map of locale specific regular expressions
+ * @param locale - defaults to en-GB
+ */
+export function findByLocale(d: string, localeSet: Map<string, RegExp[]>, locale: string[]): RegExpMatchArray[] {
+  let result: RegExpMatchArray[] = [];
+  locale.forEach(loc => {
+    let re = localeSet.get(loc);
+    if (re) {
+      re.forEach(m => {
+        for (const mt of d.matchAll(m)) {
+          if (result.findIndex((item) => item.index === mt.index && item[0] === mt[0]) === -1) {
+            result.push(mt);
+          }
+        }
+      });
+    }
+  });
+  result.sort((a: any, b: any) => a.index > b.index ? 1 : -1);
+  return result;
+}

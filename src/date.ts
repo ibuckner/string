@@ -1,17 +1,23 @@
 import { find } from "./find";
 
+const s = "(?:\\-|\\.|\\/|\\\\)";
 const sep = "(?:,\\s?|\\s|\\-|\\.|\\/|\\\\|\\sof\\s|\\sthe\\s)";
 const dd = "(0?(?:1(?:st)?|2(?:nd)?|3(?:rd)?|[4-9](?:th)?)|1[0-9](?:th)?|2[04-9](?:th)?|[23]1(?:st)?|22(?:nd)?|23(?:rd)?|30(?:th)?)";
 const mm = "(0?[1-9]|1[012])";
 const m = "(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)";
-const yyyy = "(\\d{4})";
+const yyyy = "([12]\\d{3})";
+const yy = "(\\d{2})";
 
 const reDates: RegExp[] = [
-  // full short dates
+  // full year short dates
   new RegExp(`\\b${yyyy}${sep}${mm}${sep}${dd}\\b`, "gmi"),
   new RegExp(`\\b${yyyy}${sep}${dd}${sep}${mm}\\b`, "gmi"),
   new RegExp(`\\b${dd}${sep}${mm}${sep}${yyyy}\\b`, "gmi"),
   new RegExp(`\\b${mm}${sep}${dd}${sep}${yyyy}\\b`, "gmi"),
+
+  // partial year short dates
+  new RegExp(`\\b${dd}${s}${mm}${s}${yy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}${s}${dd}${s}${yy}\\b`, "gmi"),
 
   // full long dates
   new RegExp(`\\b${yyyy}${sep}${m}${sep}${dd}\\b`, "gmi"),

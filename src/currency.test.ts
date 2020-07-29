@@ -1,4 +1,14 @@
-import { findCurrency } from "./currency";
+import { findBankingNumbers, findCurrency } from "./currency";
+
+test("findBankingNumbers()", () => {
+  let m = findBankingNumbers(`The accounts are:
+  sort code: 12-43-95, a/c 24561278
+  card: 4456 7829 4560 7976
+  `);
+  expect(m[0][0]).toBe("12-43-95");
+  expect(m[1][0]).toBe("24561278");
+  expect(m[2][0]).toBe("4456 7829 4560 7976");
+});
 
 test("findDate()", () => {
   let m = findCurrency(`The shopping list was:

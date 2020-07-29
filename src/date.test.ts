@@ -11,7 +11,7 @@ test("isDate()", () => {
 test("findDate()", () => {
   const m = findDate(`Dates to locate are:
 2020-12-31, 2020/12/01, 2020.1.1, 2019-Apr-01, 31\\3\\2019, 14 Apr 2018, 2018 Dec 15, 2019 Aug 1st, November 4th, 2022, 03rd September 2018,
-2nd of February 2010, January the 18th, 6 July`);
+2nd of February 2010, January the 18th, 6 July, 27.1.93`);
   expect(m[0][0]).toBe("2020-12-31");
   expect(m[1][0]).toBe("2020/12/01");
   expect(m[2][0]).toBe("2020.1.1");
@@ -25,6 +25,7 @@ test("findDate()", () => {
   expect(m[10][0]).toBe("2nd of February 2010");
   expect(m[11][0]).toBe("January the 18th");
   expect(m[12][0]).toBe("6 July");
+  expect(m[13][0]).toBe("27.1.93");
 });
 
 test("findDate exceptions", () => {

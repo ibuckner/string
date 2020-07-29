@@ -1,6 +1,6 @@
 import { find } from "./find";
 
-const hh = "(?:0?[0-9]|1[0-9]|2[0-3])";
+const hh = "(?:00|0?[1-9]|1[0-9]|2[0-3])";
 const mm = "(?:[0-5][0-9])";
 const ms = "(?:[0-9][0-9][0-9])";
 const sep = "[\\.\\:]";
@@ -13,7 +13,7 @@ const reTimes: RegExp[] = [
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\s?hrs\\b`, "gmi"),                     // hrs
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\s?p\\.?m\\.?${tz}\\b`, "gmi"),         // pm
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\so[''\\s]{1,2}clock\\b`, "gmi"),       // o clock
-  new RegExp(`[\\@]${hh}${sep}?${mm}\\b`, "gmi")                                // @1700
+  new RegExp(`\\@${hh}${sep}?${mm}\\b`, "gmi")                                  // @1700
 ];
 
 /**

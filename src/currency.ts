@@ -1,3 +1,5 @@
+import { findByLocale } from "./find";
+
 const currencies = new Map<string, RegExp[]>([
   [
     "en-GB",
@@ -15,25 +17,33 @@ const currencies = new Map<string, RegExp[]>([
   ]
 ]);
 
+const numbers = new Map<string, RegExp[]>([
+  [
+    "en-GB",
+    [
+      /\b2(22[1-9]\d{12}|2[3-9]\d{13}|[3-6]\d{14}|7[0-1]\d{13}|720\d{12})\b/gm,
+      /\b4\d\d\d\s?\d\d\d\d\s?\d\d\d\d\s?\d\d\d\d\b/gm,
+      /\b5[1-5]\d\d\s?\d\d\d\d\s?\d\d\d\d\s?\d\d\d\d\b/gm,
+      /\b\d{7,8}\b/gm,
+      /\b\d\d\-\d\d\-\d\d\b/gm
+    ]
+  ]
+]);
+
+/**
+ * Returns iterator of banking numbers located in string
+ * @param d - string to test
+ * @param locale - defaults to en-GB
+ */
+export function findBankingNumbers(d: string, locale: string[] = ["en-GB"]): RegExpMatchArray[] {
+  return findByLocale(d, numbers, locale);
+}
+
 /**
  * Returns iterator of currencies located in string
  * @param d - string to test
  * @param locale - defaults to en-GB
  */
 export function findCurrency(d: string, locale: string[] = ["en-GB"]): RegExpMatchArray[] {
-  let result: RegExpMatchArray[] = [];
-  locale.forEach(loc => {
-    let reMoney = currencies.get(loc);
-    if (reMoney) {
-      reMoney.forEach(m => {
-        for (const mt of d.matchAll(m)) {
-          if (result.findIndex((item) => item.index === mt.index && item[0] === mt[0]) === -1) {
-            result.push(mt);
-          }
-        }
-      });
-    }
-  });
-  result.sort((a: any, b: any) => a.index > b.index ? 1 : -1);
-  return result;
+  return findByLocale(d, currencies, locale);
 }

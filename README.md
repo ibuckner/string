@@ -4,26 +4,32 @@ A collection of functions for searching and verifying strings
 
 ```javascript
 
+  findBankingNumbers(searchText, locale=["en-GB"]);
+  // Returns array of RegExpArray of banking related numbers
+
   findCurrency(searchText, locale=["en-GB"]);
-  // Returns array of RegExpMatchArray of currency values found
+  // Returns array of RegExpMatchArray of currency values
 
   findDate(searchText);
-  // Returns array of RegExpMatchArray of dates found
+  // Returns array of RegExpMatchArray of dates
 
   findEmail(searchText);
-  // Returns array of RegExpMatchArray of emails found
+  // Returns array of RegExpMatchArray of emails
 
   findNHSNumber(searchText);
-  // Returns array of RegExpMatchArray of NHS numbers found
+  // Returns array of RegExpMatchArray of NHS numbers
 
   findNumeric(searchText);
-  // Returns array of RegExpMatchArray of numeric values found
+  // Returns array of RegExpMatchArray of numeric values
+
+  findTime(searchText);
+  // Returns array of RegExpMatchArray of times
 
   findUKPostcode(searchText);
-  // Returns array of RegExpMatchArray of UK postcodes found
+  // Returns array of RegExpMatchArray of UK postcodes
 
   findURL(searchText);
-  // Returns array of RegExpMatchArray of urls found
+  // Returns array of RegExpMatchArray of urls
 
   isApostrophe(character);
   // Returns true if single quote
