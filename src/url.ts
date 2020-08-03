@@ -2,7 +2,7 @@ import { find } from "./find";
 
 const reURL: RegExp[] = [
   /\b(?:(?:https?|file|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?:\w+-?)*\w+)(?:\.(?:\w+-?)*\w+)*(?:\.(?:\w{2,}))(?::\d{2,5})?(?:\/[^\s]*)?/gmi,
-  /\b[a-z\.]+\/\w+\b/gmi
+  /\b[a-z]+\.[a-z\.]+[a-z]\/\w+\b/gmi
 ];
 
 /**

@@ -22,6 +22,9 @@ A collection of functions for searching and verifying strings
   findNumeric(searchText);
   // Returns array of RegExpMatchArray of numeric values
 
+  findOrdinal(searchText);
+  // Returns array of RegExpMatchArray of ordinal values e.g. 1st, third
+
   findTime(searchText);
   // Returns array of RegExpMatchArray of times
 

@@ -1,4 +1,4 @@
-import { isNumeric, findNumeric } from "./numeric";
+import { isNumeric, findNumeric, findOrdinal } from "./numeric";
 
 test("isNumeric()", () => {
   expect(isNumeric("Non-empty string")).toBe(false);
@@ -14,6 +14,14 @@ test("isNumeric()", () => {
 test("findNumeric()", () => {
   const m = findNumeric("-43.008 and -1e+0 and .23");
   expect(m[0][0]).toBe("-43.008");
-  expect(m[2][0]).toBe(".23");
   expect(m[1][0]).toBe("-1e+0");
+  expect(m[2][0]).toBe(".23");
+});
+
+test("findOrdinal()", () => {
+  const m = findOrdinal("For the hundredth time, the Martians came 1st, 2nd and fifty second in the space race.");
+  expect(m[0][0]).toBe("hundredth");
+  expect(m[1][0]).toBe("1st");
+  expect(m[2][0]).toBe("2nd");
+  expect(m[3][0]).toBe("fifty second");
 });
