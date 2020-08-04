@@ -13,7 +13,7 @@ const reTimes: RegExp[] = [
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\s?hrs\\b`, "gmi"),                     // hrs
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\s?p\\.?m\\.?${tz}\\b`, "gmi"),         // pm
   new RegExp(`\\b${hh}(?:${sep}?${mm})?\\so[''\\s]{1,2}clock\\b`, "gmi"),       // o clock
-  new RegExp(`\\@${hh}${sep}?${mm}\\b`, "gmi")                                  // @1700
+  new RegExp(`\\@\\s?${hh}${sep}?${mm}\\b`, "gmi")                              // @1700
 ];
 
 /**
