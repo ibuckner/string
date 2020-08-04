@@ -1,4 +1,4 @@
-import { isApostrophe, isHyphen, isSpace } from "./index";
+import { isApostrophe, isHyphen, isNumeric, isSpace } from "./index";
 
 /**
  * Returns true if character string begins with an uppercase letter
@@ -10,6 +10,9 @@ export function isPropercase(text: string): boolean {
 		if (isApostrophe(text[i]) || isHyphen(text[i]) || isSpace(text[i])) {
 			wordStart = true;
 			proper = false;
+		} else if (isNumeric(text[i]) && wordStart) {
+			proper = true;
+			wordStart = false;
 		} else if (text[i] === text[i].toLocaleLowerCase() && wordStart) {
 			proper = false;
 			break;
