@@ -13,6 +13,8 @@ export function isPropercase(text: string): boolean {
 		} else if (isNumeric(text[i]) && wordStart) {
 			proper = true;
 			wordStart = false;
+		} else if (isNumeric(text[i])) {
+			// do nothing
 		} else if (text[i] === text[i].toLocaleLowerCase() && wordStart) {
 			proper = false;
 			break;

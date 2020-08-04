@@ -19,9 +19,9 @@ test("findNumeric()", () => {
 });
 
 test("findOrdinal()", () => {
-  const m = findOrdinal("For the hundredth time, the Martians came 1st, 2nd and fifty second in the space race.");
+  const m = findOrdinal("For the hundredth time, the Martians came 1st, 22nd and fifty-second in the space race. ");
   expect(m[0][0]).toBe("hundredth");
   expect(m[1][0]).toBe("1st");
-  expect(m[2][0]).toBe("2nd");
-  expect(m[3][0]).toBe("fifty second");
+  expect(m[2][0]).toBe("22nd");
+  expect(m[3][0]).toBe("fifty-second");
 });

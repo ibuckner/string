@@ -13,7 +13,7 @@ test("isPropercase()", () => {
   expect(isPropercase("John Paul")).toStrictEqual(true);
   expect(isPropercase("John paul")).toStrictEqual(false);
   expect(isPropercase("O'Grady")).toStrictEqual(true);
-  expect(isPropercase("1st Avenue")).toStrictEqual(true);
+  expect(isPropercase("21st Avenue")).toStrictEqual(true);
 });
 
 test("properCase()", () => {
