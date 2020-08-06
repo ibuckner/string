@@ -5,14 +5,14 @@ const currencies = new Map<string, RegExp[]>([
     "en-GB",
     [
       /£\s*\d[\d,]*(?:\.\d{1,2})?(?:\s?(?:b|m|tr)illion|bn|k|m)?\b/gmi,
-      /\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m)?(?:(?:\s(?:pounds?|pence))|p)\b/gmi
+      /\b\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m)?(?:(?:\s(?:pounds?|pence))|p)\b/gmi
     ]
   ],
   [
     "en-US",
     [
       /\$\s*\d[\d,]*(?:\.\d{1,2})?(?:\s?(?:b|m|tr)illion|bn|k|m)?\b/gmi,
-      /\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m)?(?:(?:\s(?:dollar|cent)s?)|c)\b/gmi
+      /\b\d[\d,\.]*(?:\s(?:b|m|tr)illion|bn|k|m)?(?:(?:\s(?:dollar|cent)s?)|c)\b/gmi
     ]
   ]
 ]);

@@ -8,5 +8,9 @@ const rePostcode = /\b(([A-Z]{1,2}[0-9][A-Z0-9]?|0[LX]\d{1,2}|ASCN|STHL|TDCU|BBN
  * @param d - string to test
  */
 export function findUKPostcode(d: string): RegExpMatchArray[] {
-  return [...d.matchAll(rePostcode)];
+  let r: RegExpMatchArray[] = [], m: RegExpExecArray | null;
+  while ((m = rePostcode.exec(d)) !== null) {
+    r.push(m);
+  }
+  return r;
 }

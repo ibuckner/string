@@ -19,7 +19,11 @@ export function isNumeric(n: any): boolean {
  * @param d - string to test
  */
 export function findNumeric(d: string): RegExpMatchArray[] {
-  return [...d.matchAll(reN)];
+  let r: RegExpMatchArray[] = [], m: RegExpExecArray | null;
+  while ((m = reN.exec(d)) !== null) {
+    r.push(m);
+  }
+  return r;
 }
 
 /**

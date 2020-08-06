@@ -8,5 +8,9 @@ const reEmail = /\b(?:[''\w+\-\_\.]+)@(?!\.)(?:[\w+\-\_\.]+)\.(?:[\w+\-\_\.]+)\b
  * @param d - string to test
  */
 export function findEmail(d: string): RegExpMatchArray[] {
-  return [...d.matchAll(reEmail)];
+  let r: RegExpMatchArray[] = [], m: RegExpExecArray | null;
+  while ((m = reEmail.exec(d)) !== null) {
+    r.push(m);
+  }
+  return r;
 }

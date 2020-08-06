@@ -6,13 +6,12 @@
 export function find(d: string, re: RegExp[]): RegExpMatchArray[] {
   let result: RegExpMatchArray[] = [];
   let clean = new Map<number, RegExpMatchArray>();
+  let mt: RegExpExecArray | null;
 
   // find matches and de-duplicate
-  re.forEach(m => {
-    for (const mt of d.matchAll(m)) {
-      // debug
-      (mt as any).source = m.source;
-
+  re.forEach(rema => {    
+    while ((mt = rema.exec(d)) !== null) {
+      (mt as any).source = rema.source;
       if (mt.index !== undefined) {
         if (clean.has(mt.index)) {
           const chk = clean.get(mt.index) as RegExpMatchArray;
@@ -61,12 +60,14 @@ export function find(d: string, re: RegExp[]): RegExpMatchArray[] {
  */
 export function findByLocale(d: string, localeSet: Map<string, RegExp[]>, locale: string[]): RegExpMatchArray[] {
   let result: RegExpMatchArray[] = [];
+  let mt: RegExpExecArray | null;
+
   locale.forEach(loc => {
     let re = localeSet.get(loc);
     if (re) {
-      re.forEach(m => {
-        for (const mt of d.matchAll(m)) {
-          if (result.findIndex((item) => item.index === mt.index && item[0] === mt[0]) === -1) {
+      re.forEach(rema => {
+        while ((mt = rema.exec(d)) !== null) {
+          if (result.findIndex((item) => mt && item.index === mt.index && item[0] === mt[0]) === -1) {
             result.push(mt);
           }
         }

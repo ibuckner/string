@@ -26,5 +26,9 @@ export function isNHSNumber(nhs: string): boolean {
  * @param d - string to test
  */
 export function findNHSNumber(d: string): RegExpMatchArray[] {
-  return [...d.matchAll(reNHS)];
+  let r: RegExpMatchArray[] = [], m: RegExpExecArray | null;
+  while ((m = reNHS.exec(d)) !== null) {
+    r.push(m);
+  }
+  return r;
 }
