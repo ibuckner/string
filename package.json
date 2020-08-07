@@ -1,5 +1,5 @@
 {
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "A small collection of string related functions",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -7,8 +7,9 @@
   "name": "@buckneri/string",
   "scripts": {
     "build": "rollup -c",
-    "test": "jest --config jestconfig.json",
+    "test": "npm run test-jest",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --config jestconfig.json --runInBand",
+    "test-jest": "jest --config jestconfig.json",
     "test-upload": "npm publish --dry-run --access public",
     "upload": "npm publish --access public"
   },
