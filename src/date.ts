@@ -1,12 +1,12 @@
 import { find } from "./find";
 
 const s = "(?:\\-|\\.|\\/|\\\\)";
-const sep = "(?:,\\s?|\\s|\\-|\\.|\\/|\\\\|\\sof\\s|\\sthe\\s)";
-const dd = "(0?(?:1(?:st)?|2(?:nd)?|3(?:rd)?|[4-9](?:th)?)|1[0-9](?:th)?|2[04-9](?:th)?|[23]1(?:st)?|22(?:nd)?|23(?:rd)?|30(?:th)?)";
-const mm = "(0?[1-9]|1[012])";
-const m = "(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)";
-const yyyy = "([12]\\d{3})";
-const yy = "(\\d{2})";
+const sep = "(?:\\s|\\-|\\.|\\/|\\\\|\\sof\\s|\\sthe\\s)";
+const dd = "(?:0?(?:1(?:st)?|2(?:nd)?|3(?:rd)?|[4-9](?:th)?)|1[0-9](?:th)?|2[04-9](?:th)?|[23]1(?:st)?|22(?:nd)?|23(?:rd)?|30(?:th)?)";
+const mm = "(?:0?[1-9]|1[012])";
+const m = "(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)";
+const yyyy = "(?:[12]\\d{3})";
+const yy = "(?:\\d{2})";
 
 const reDates: RegExp[] = [
   // full year short dates
@@ -29,7 +29,8 @@ const reDates: RegExp[] = [
   new RegExp(`\\b${yyyy}${sep}${m}\\b`, "gmi"),
   new RegExp(`\\b${dd}${sep}${m}\\b`, "gmi"),
   new RegExp(`\\b${m}${sep}${yyyy}\\b`, "gmi"),
-  new RegExp(`\\b${m}${sep}${dd}\\b`, "gmi"),
+  new RegExp(`\\b${m}${sep}${dd}(?![\\//])\\b`, "gmi"),
+  new RegExp(`\\b${m}${sep}${dd}\-${dd}\\b`, "gmi"),
 ];
 
 /**

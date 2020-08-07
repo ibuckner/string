@@ -36,7 +36,8 @@ export function find(d: string, re: RegExp[]): RegExpMatchArray[] {
       if (prev.index !== undefined && r.index !== undefined) {
         const pl = prev.index + prev[0].length;
         if (r.index >= prev.index && r.index <= pl) { // r overlaps
-        drop.push(n);
+          // drop the shorter overlapping item, biased towards first item found
+          drop.push(n);
         } else {
           prev = r;
         }
