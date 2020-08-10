@@ -1,7 +1,8 @@
 import { findUKPostcode } from "./postcode";
 
 test("findUKPostcode()", () => {
-  const m = findUKPostcode(`W1J 7NT, DE12 8HJ, SW1A 1AA, PL7 1RF, IM94AJ, GY1 3EW, W2 1JB, GIR 0AA, EC1A 1BB, and 0X5 1RE`);
+  const m = findUKPostcode(`W1J 7NT, DE12 8HJ, SW1A 1AA, PL7 1RF, IM94AJ, GY1 3EW, W2 1JB, GIR 0AA, EC1A 1BB, and 0X5 1RE
+  W1N 4DJ`);
   expect(m[0][0]).toBe("W1J 7NT");
   expect(m[1][0]).toBe("DE12 8HJ");
   expect(m[2][0]).toBe("SW1A 1AA");
@@ -12,4 +13,5 @@ test("findUKPostcode()", () => {
   expect(m[7][0]).toBe("GIR 0AA");
   expect(m[8][0]).toBe("EC1A 1BB");
   expect(m[9][0]).toBe("0X5 1RE");
+  expect(m[10][0]).toBe("W1N 4DJ");
 });

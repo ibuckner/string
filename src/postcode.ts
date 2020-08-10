@@ -2,7 +2,7 @@
  * Tests for UK postcode
  */
 const AA9A: string = `[A-Z][A-Z]\\d[ABEHMNPRVWXY]`;
-const A9A: string = `[A-Z]\\d[ABCDEFGHJKPSTUW]`;
+const A9A: string = `[A-Z]\\d[ABCDEFGHJKNPSTUW]`;
 const A9: string = `[A-Z]\\d`;
 const A99: string = `[A-Z]\\d\\d`;
 const AA9: string = `[A-Z][A-Z]\\d`;
