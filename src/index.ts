@@ -9,6 +9,7 @@ import { findUKTelephone } from "./telephone";
 import { findTime } from "./time";
 import { left, right } from "./trim";
 import { findURL } from "./url";
+import { selectionTrim } from "./selection";
 
 /**
  * Returns true if character is an aposthrophe
@@ -91,5 +92,6 @@ export {
   left,
   properCase,
   normalize,
-  right
+  right,
+  selectionTrim
 };

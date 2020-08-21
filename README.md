@@ -66,6 +66,9 @@ A collection of functions for searching and verifying strings
 
   right(string, n);
   // Returns substring starting from right hand side for n length
+
+  selectionTrim(selection);
+  // trims the whitespace around the text selection
 ```
 
 ## Install
