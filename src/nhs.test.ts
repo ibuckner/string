@@ -8,6 +8,7 @@ test("isNHSNumber()", () => {
   expect(isNHSNumber("401 023 2137")).toBe(true);
   expect(isNHSNumber("9961234567")).toBe(false);
   expect(isNHSNumber("1111111111")).toBe(false);
+  expect(isNHSNumber("33 44")).toBe(false);
 });
 
 test("findNHSNumber()", () => {
