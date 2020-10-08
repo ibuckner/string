@@ -44,6 +44,9 @@ function normalize(text: string): string {
   let r: string = text.replace(/[\r\n]+/gm, "\n").trim();
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
+  if (r.length > 1) {
+    r = r[0].toLocaleUpperCase() + r.substring(1);
+  }
 
   let re: RegExp = new RegExp(/\b(\d+)([A-Z][a-z]+)\b/, "gm");
   while ((m = re.exec(r)) !== null) {
