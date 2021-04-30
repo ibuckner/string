@@ -1,4 +1,21 @@
 /**
+ * Creates a selection range
+ * @param node Node to apply selection range to
+ * @param start 
+ * @param length 
+ * @returns Selection
+ */
+export function createSelection(node: Node, start: number, length: number): Selection {
+  const range = document.createRange();
+  range.setStart(node, start);
+  range.setEnd(node, start + length);
+  const sel = window.getSelection() as Selection;
+  sel.removeAllRanges();
+  sel.addRange(range);
+  return sel;
+}
+
+/**
  * Returns false if range is interrupted by multiple node types
  * @param range - valid document fragment containing nodes and text
  */
@@ -12,6 +29,19 @@ export function rangeContiguous(range: Range): boolean {
  */
 export function rangeEmpty(range: Range): boolean {
   return range.startOffset === range.endOffset;
+}
+
+/*
+ * Saves the cursor's position and returns a function
+ * that when run, sets the cursor to the saved position
+ */
+export function restoreCursor(): Function {
+  let sel = window.getSelection() as Selection;
+  const node = sel.focusNode;
+  const offset = sel.focusOffset;
+  return function restore() {
+    sel.collapse(node, offset);
+  };
 }
 
 /**
