@@ -16,9 +16,6 @@ A collection of functions for searching and verifying strings
   findEmail(searchText);
   // Returns array of RegExpMatchArray of emails
 
-  findNHSNumber(searchText);
-  // Returns array of RegExpMatchArray of NHS numbers
-
   findNumeric(searchText);
   // Returns array of RegExpMatchArray of numeric values
 
@@ -42,9 +39,6 @@ A collection of functions for searching and verifying strings
 
   isHyphen(character);
   // Returns true if dash
-
-  isNHSNumber(string);
-  // Returns true if NHS number
 
   isNumeric(string);
   // Returns true if number

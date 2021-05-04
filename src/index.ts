@@ -2,7 +2,6 @@ import { findBankingNumbers, findCurrency } from "./currency";
 import { isDate, findDate } from "./date";
 import { isNumeric, findNumeric, findOrdinal } from "./numeric";
 import { findEmail } from "./email";
-import { isNHSNumber, findNHSNumber } from "./nhs";
 import { findUKPostcode } from "./postcode";
 import { isPropercase, properCase } from "./propercase";
 import { findUKTelephone } from "./telephone";
@@ -76,7 +75,6 @@ export {
   findCurrency,
   findDate,
   findEmail,
-  findNHSNumber,
   findNumeric,
   findOrdinal,
   findTime,
@@ -87,7 +85,6 @@ export {
   isApostrophe,
   isDate,
   isHyphen,
-  isNHSNumber,
   isNumeric,
   isPropercase,
   isSpace,
