@@ -36,4 +36,5 @@ test("normalize()", () => {
   expect(normalize("THIS IS AN ALL CAPS SENTENCE.")).toStrictEqual("This Is An All Caps Sentence.");
   expect(normalize("THE BELL INN,USA")).toStrictEqual("The Bell Inn,Usa");
   expect(normalize("I live at 23West Side")).toStrictEqual("I live at 23 West Side");
+  expect(normalize("Back of HeadNo bleeding")).toStrictEqual("Back of Head No bleeding");
 });

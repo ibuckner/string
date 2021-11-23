@@ -43,13 +43,14 @@ function normalize(text: string): string {
   let r: string = text.replace(/[\r\n]+/gm, "\n").trim();
   r = r.replace(/[ \t]+/gm, " ");
   r = r.replace(/\s?[\-]\s?/gm, "-");
-  if (r.length > 1) {
-    r = r[0].toLocaleUpperCase() + r.substring(1);
+
+  let gluedWords = new RegExp(/\b([A-Z][a-z]{2,}|\d+)([A-Z][a-z]{1,})\b/, "gm");
+  while ((m = gluedWords.exec(r)) !== null) {
+    r = r.substring(0, m.index) + m[1] + " " + m[2] + r.substring(m.index + m[0].length, r.length);
   }
 
-  let re: RegExp = new RegExp(/\b(\d+)([A-Z][a-z]+)\b/, "gm");
-  while ((m = re.exec(r)) !== null) {
-    r = r.substring(0, m.index) + m[1] + " " + m[2] + r.substring(m.index + m[0].length, r.length);
+  if (r.length > 1) {
+    r = r[0].toLocaleUpperCase() + r.substring(1);
   }
 
   if (/\s/gm.test(text) && text.length > 15) {
@@ -61,7 +62,7 @@ function normalize(text: string): string {
     }
   }
 
-  re = new RegExp(/\b[a-z]+\b/, "gmi");
+  let re = new RegExp(/\b[a-z]+\b/, "gmi");
   while ((m = re.exec(r)) !== null) {
     if (m[0] !== m[0].toLocaleLowerCase() && m[0] !== m[0].toLocaleUpperCase() && !isPropercase(m[0])) {
       r = r.substring(0, m.index) + m[0].toLocaleLowerCase() + r.substring(m.index + m[0].length);
