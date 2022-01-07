@@ -15,9 +15,15 @@ const reDates: RegExp[] = [
   new RegExp(`\\b${dd}${sep}${mm}${sep}${yyyy}\\b`, "gmi"),
   new RegExp(`\\b${mm}${sep}${dd}${sep}${yyyy}\\b`, "gmi"),
 
-  // partial year short dates
-  new RegExp(`\\b${dd}${s}${mm}${s}${yy}\\b`, "gmi"),
-  new RegExp(`\\b${mm}${s}${dd}${s}${yy}\\b`, "gmi"),
+  // partial year short dates - mixed separators not allowed
+  new RegExp(`\\b${dd}\\-${mm}\\-${yy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}\\-${dd}\\-${yy}\\b`, "gmi"),
+  new RegExp(`\\b${dd}\\.${mm}\\.${yy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}\\.${dd}\\.${yy}\\b`, "gmi"),
+  new RegExp(`\\b${dd}\\/${mm}\\/${yy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}\\/${dd}\\/${yy}\\b`, "gmi"),
+  new RegExp(`\\b${dd}\\\\${mm}\\\\${yy}\\b`, "gmi"),
+  new RegExp(`\\b${mm}\\\\${dd}\\\\${yy}\\b`, "gmi"),
 
   // full long dates
   new RegExp(`\\b${yyyy}${sep}${m}${sep}${dd}\\b`, "gmi"),
